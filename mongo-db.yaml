@@ -1,0 +1,35 @@
+#You may exec to this pod and go to /data/db 
+#To see the data made by the position simulator
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongodb
+spec:
+  selector:
+    matchLabels:
+      app: mongodb
+  replicas: 1
+  template: # template for the pods
+    metadata:
+      labels:
+        app: mongodb
+    spec:
+      containers:
+      - name: mongodb
+        image: mongo:3.6.5-jessie
+---
+#Logic goes from SpringBoot > This Service > Pod (mongodb)
+#Because release3 was used in position-tracker.
+#And it uses an application property that in order for it to communicate
+#fleetman-mongodb FDQN should be used.
+apiVersion: v1
+kind: Service
+metadata:
+  name: fleetman-mongodb
+spec:
+  type: ClusterIP
+  selector:
+    app: mongodb
+  ports:
+    - name: mongo-service
+      port: 27017
