@@ -33,7 +33,7 @@ Before you begin, ensure you have the following prerequisites installed:
    Access the ArgoCD UI at `https://localhost:8081` in your web browser. Log in with the default username (username: `admin`). For password, generate password using the below command:
    
    ```bash
-   kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 --decode && echo
+   kubectl get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 --decode && echo
    ```
 
 4. **Create an Argo CD application manifest** 
