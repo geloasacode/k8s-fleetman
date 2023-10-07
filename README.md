@@ -57,8 +57,9 @@ Once the application is deployed, you can access it in your Docker Desktop Kuber
 To remove the deployed application and resources:
 
 ```bash
-kubectl delete -f argocd-namespace-default.yaml
 kubectl delete -f application.yaml
+kubectl delete -f argocd-namespace-default.yaml
+cd main-app/ ; kubectl delete -f .
 ```
 
 ## Additional Resources
