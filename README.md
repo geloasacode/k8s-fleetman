@@ -1,4 +1,5 @@
 # 3-Tier App Deployment with ArgoCD and Kubernetes on Docker Desktop
+![Worfklow](k8s-fleetman.png)
 
 ## Prerequisites
 
