@@ -1,0 +1,12 @@
+#!/bin/bash
+
+for f in raw_gpx/*.gpx
+do
+   filename=$(basename "$f")
+   extension="${filename##*.}"
+   filename="${filename%.*}"
+
+   # Extract latitude and longitude values and write them to the output file
+   cat "$f" | grep '<trkpt' | awk -F'"' '{print "lat=\"" $2 "\" lon=\"" $4 "\""}' > new_tracks/"$filename"
+done
+
